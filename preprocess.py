@@ -14,7 +14,7 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 factory_sw = StopWordRemoverFactory()
 stopword_sastrawi = factory_sw.get_stop_words()
 
-# Tambahan manual interjeksi/kata umum yang sering muncul di sosmed (sesuai PPT)
+# Tambahan manual interjeksi/kata umum yang sering muncul di sosmed 
 manual_stopwords = [
     'sih', 'dong', 'kok', 'deh', 'tuh', 'nih', 'ya', 'yah', 'loh', 
     'kan', 'kek', 'lah', 'pun', 'mah', 'si', 'itu', 'ini', 'yang', 
@@ -28,7 +28,7 @@ factory_stem = StemmerFactory()
 stemmer = factory_stem.create_stemmer()
 
 # ==========================================
-# 2. DEFINISI KAMUS SINGKATAN (MILIK ANDA)
+# 2. DEFINISI KAMUS SINGKATAN
 # ==========================================
 kamus_slang = {
     'yg': 'yang', 'y': 'ya', 'klo': 'kalau', 'tp': 'tapi', 'tpi': 'tapi',
@@ -148,7 +148,6 @@ def main():
         df[col_text] = df[col_text].astype(str)
         print(f"Total data awal: {len(df)}")
         
-        # --- PIPELINE SESUAI PPT (HAL 12) ---
         
         # 1. Cleaning
         print("1. Melakukan Cleaning Regex (Hapus URL, Emoji, dll)...")
@@ -158,11 +157,11 @@ def main():
         print("2. Melakukan Normalisasi Slang...")
         df['step2_normal'] = df['step1_clean'].apply(normalize_slang)
         
-        # 3. Stopword Removal (BARU)
+        # 3. Stopword Removal 
         print("3. Melakukan Stopword Removal (Sastrawi + Manual)...")
         df['step3_stopword'] = df['step2_normal'].apply(remove_stopwords)
         
-        # 4. Stemming (BARU)
+        # 4. Stemming
         print("4. Melakukan Stemming (Sastrawi) - Proses ini mungkin agak lama...")
         df['step4_stemmed'] = df['step3_stopword'].apply(stemming_text)
         
@@ -198,4 +197,5 @@ def main():
         print(f"Terjadi error: {e}")
 
 if __name__ == "__main__":
+
     main()
