@@ -95,7 +95,7 @@ neg_set = set([stemmer.stem(word) for word in neg_words_raw])
 print("Stemming lexicon selesai.")
 
 # ==========================================
-# 3. FUNGSI SENTIMEN (UPDATED)
+# 3. FUNGSI SENTIMEN
 # ==========================================
 
 def get_sentiment(text):
@@ -187,5 +187,6 @@ def generate_wordcloud(sentiment, colormap):
 # Generate untuk Positif dan Negatif
 generate_wordcloud('Positif', 'Greens')
 generate_wordcloud('Negatif', 'Reds')
+
 
 print("Visualisasi selesai dan disimpan.")
